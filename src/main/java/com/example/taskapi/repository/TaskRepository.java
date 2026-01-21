@@ -1,48 +1,61 @@
 package com.example.taskapi.repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.example.taskapi.model.Task;
 
 @Repository
-public class TaskRepository {
+public interface TaskRepository extends JpaRepository<Task,Long>{
 	
-	private final Map<Long,Task> tasks = new HashMap<>();
-	private final AtomicLong counter= new AtomicLong();
+//	private final Map<Long,Task> tasks = new HashMap<>();
+//	private final AtomicLong counter= new AtomicLong();
+//	
+//	public TaskRepository() {
+//		save(new Task(null,"Studiare spring boot","Completare la lezione"));
+//		save(new Task(null,"Fare la spesa","Comprare gli ingredienti per la cena"));
+//	}
+//	
+//	public List<Task> findAll(){
+//		return new ArrayList<Task>(tasks.values());
+//	}
+//	
+//	public Optional<Task> findById(Long id){
+//		return Optional.ofNullable(tasks.get(id));
+//	}
+//	
+//	public Task save(Task task) {
+//		if(task.getId()==null) {
+//			task.setId(counter.incrementAndGet());
+//		}
+//		tasks.put(task.getId(), task);
+//		return task;
+//	}
+//
+//	public void deleteById(Long id) {
+//		tasks.remove(id);
+//	}
+//	
+//	public boolean existsById(Long id) {
+//		return tasks.containsKey(id);
+//	}
 	
-	public TaskRepository() {
-		save(new Task(null,"Studiare spring boot","Completare la lezione"));
-		save(new Task(null,"Fare la spesa","Comprare gli ingredienti per la cena"));
-	}
+	List<Task> findByCompletato(boolean completato);
 	
-	public List<Task> findAll(){
-		return new ArrayList<Task>(tasks.values());
-	}
+	List<Task> findByTitoloContainingIgnoreCase(String titolo);
 	
-	public Optional<Task> findById(Long id){
-		return Optional.ofNullable(tasks.get(id));
-	}
+	List<Task> findByCategoriaId(Long categoriaId);
 	
-	public Task save(Task task) {
-		if(task.getId()==null) {
-			task.setId(counter.incrementAndGet());
-		}
-		tasks.put(task.getId(), task);
-		return task;
-	}
-
-	public void deleteById(Long id) {
-		tasks.remove(id);
-	}
+	@Query("SELECT t FROM Task t WHERE t.completato= false ORDER BY t.dataCreazione DESC")
+	List<Task> findTaskNonCompletatiOrdinati();
 	
-	public boolean existsById(Long id) {
-		return tasks.containsKey(id);
-	}
+	@Query("SELECT t FROM Task t WHERE t.categoria.nome= :nomeCategoria")
+	List<Task> findByCategoriaNome(@Param("nomeCategoria") String nomeCategoria);
+	
+	@Query(value="SELECT * FROM tasks WHERE data_creazione > CURRENT_DATE - 7", nativeQuery= true)
+	List<Task> findTaskUltimaSettimana();
 }
