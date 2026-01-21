@@ -36,7 +36,7 @@ public class JwtRequestFilter extends OncePerRequestFilter{
 		//estraggo token dall'header
 		
 		if(authorizationHeader !=null && authorizationHeader.startsWith("Bearer ")) {
-			jwt= authorizationHeader.substring(7);
+			jwt= authorizationHeader.substring(7).trim();
 			try {
 				email= jwtUtil.extractEmail(jwt);
 			} catch (Exception e) {

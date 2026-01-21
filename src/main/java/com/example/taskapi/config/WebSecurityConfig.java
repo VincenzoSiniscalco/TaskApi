@@ -42,7 +42,6 @@ public class WebSecurityConfig {
 		http.csrf(csrf-> csrf.disable())
 		.authorizeHttpRequests(auth -> auth
 		.requestMatchers("/api/auth/**").permitAll()
-		.requestMatchers("/api/tasks/**").permitAll()
 		.anyRequest().authenticated())
 		.sessionManagement(session-> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 		.headers(headers -> headers.frameOptions(frame-> frame.disable()));
