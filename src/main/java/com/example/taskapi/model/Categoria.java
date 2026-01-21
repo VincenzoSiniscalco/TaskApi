@@ -3,6 +3,8 @@ package com.example.taskapi.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,6 +25,7 @@ public class Categoria {
 	@Column(length=7)
 	private String colore; //e.g. per personalizzazione colore task in esadecimale (7 caratteri)
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Task> tasks= new ArrayList<Task>();
 	
 	public Categoria() {
