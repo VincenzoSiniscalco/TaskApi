@@ -1,4 +1,4 @@
-# Task Management API
+s# Task Management API
 
 [![Java](https://img.shields.io/badge/Java-17-orange.svg)](https://www.oracle.com/java/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2-green.svg)](https://spring.boot.io/)
@@ -9,17 +9,17 @@
 
 ## 📋 Indice
 
-- [Panoramica](#panoramica)
-- [Funzionalità](#funzionalità)
-- [Tecnologie Utilizzate](#tecnologie-utilizzate)
-- [Architettura](#architettura)
-- [Installazione](#installazione)
-- [Configurazione](#configurazione)
-- [API Endpoints](#api-endpoints)
-- [Esempi di Utilizzo](#esempi-di-utilizzo)
-- [Obiettivi di Apprendimento](#obiettivi-di-apprendimento)
-- [Sviluppi Futuri](#sviluppi-futuri)
-- [Contatti](#contatti)
+- [Panoramica](#-panoramica)
+- [Funzionalità](#-funzionalità)
+- [Tecnologie Utilizzate](#-tecnologie-utilizzate)
+- [Architettura](#-architettura)
+- [Installazione](#-installazione)
+- [Configurazione](#-configurazione)
+- [API Endpoints](#-api-endpoints)
+- [Esempi di Utilizzo](#-esempi-di-utilizzo)
+- [Obiettivi di Apprendimento](#-obiettivi-di-apprendimento)
+- [Possibili Sviluppi Futuri](#-possibili-sviluppi-futuri)
+- [Contatti](#-contatti)
 
 ## 🎯 Panoramica
 
